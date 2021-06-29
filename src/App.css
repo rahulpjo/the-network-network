@@ -2,10 +2,20 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  text-decoration: none;
 }
 
 .App {
   text-align: center;
+}
+
+main {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 20px;
+  overflow: scroll;
 }
 
 header {
@@ -48,7 +58,7 @@ h1 {
   color: #ffd57f;
 }
 
-h2 {
+header h2 {
   color: white;
 }
 
@@ -75,6 +85,125 @@ nav {
   color: #ffd57f;
 }
 
+.post {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #001635;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 10px 0;
+}
+
+.post aside {
+  display: flex;
+  flex-direction: row;
+  background-color: #ffd57f;
+  color: #001635;
+  padding: 10px;
+}
+
+.post aside * {
+  margin: 0 3px;
+}
+.post aside button {
+  color: #0016359f;
+}
+.post aside button:hover,
+.post aside button.selected {
+  color: #001635;
+}
+
+.post aside h4 {
+  font-size: 22px;
+  margin-bottom: 4px;
+}
+
+.post > button {
+  width: 100%;
+  cursor: pointer;
+  background-color: #ffd57f;
+  color: #001635;
+  border: none;
+  padding: 10px 0;
+  justify-self: flex-end;
+  align-self: flex-end;
+}
+
+.post > button * {
+  color: #001635;
+}
+
+.post > p {
+  background-color: white;
+  color: #001635;
+  padding: 10px;
+  margin: 15px;
+  border-radius: 6px;
+}
+
+.post-header {
+  display: flex;
+  background-color: #001635;
+  color: #ffd57f;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.post-header h3 {
+  margin-left: 15px;
+  font-size: 20px;
+}
+
+.post-header button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.selected-post {
+  width: 80vw;
+  color: white;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.selected-post > .post > h3 {
+  margin-top: 10px;
+  color: #ffd57f;
+}
+
+.selected-post > .post > h4 {
+  margin-bottom: 20px;
+}
+
+.comment {
+  background-color: white;
+  color: #001635;
+  margin: 10px;
+  padding: 5px 10px 10px;
+  text-align: left;
+  border-radius: 6px;
+}
+
+.comment-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.comment-heading aside {
+  background-color: white;
+  margin: 0 7px;
+}
+
+.comment-heading button {
+  background: none;
+  border: none;
+}
+
 footer {
   background-color: #ffd57f;
   color: #001635;
@@ -88,7 +217,7 @@ footer > h4 {
   margin-bottom: 5px;
 }
 
-.social-icon {
+footer .social-icon {
   color: #001635;
   text-decoration: none;
   padding: 0 15px;

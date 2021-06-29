@@ -1,5 +1,6 @@
-function Form() {
-  return <div></div>;
+function Form(props) {
+  console.log(props.note);
+  return <article></article>;
 }
 
 export default Form;
