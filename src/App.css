@@ -120,7 +120,8 @@ nav {
   margin-bottom: 4px;
 }
 
-.post > button {
+.post > button,
+form > button {
   width: 100%;
   cursor: pointer;
   background-color: #ffd57f;
@@ -202,6 +203,15 @@ nav {
 .comment-heading button {
   background: none;
   border: none;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+.form h3 {
+  margin-left: 15px;
+  font-size: 20px;
 }
 
 footer {
