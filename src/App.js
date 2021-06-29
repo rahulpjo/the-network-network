@@ -1,23 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route } from "react-router-dom";
+import { useState, useEffect } from "react";
+
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Post from "./components/Post";
+import Form from "./components/Form";
+
+import "./App.css";
+import { basePostsURL, config } from "./services/index";
+import axios from "axios";
 
 function App() {
+  const [posts, setPosts] = useState([]);
+  useEffect(() => {
+    const getPosts = async () => {
+      const res = await axios.get(basePostsURL, config);
+      console.log(res.data);
+      setPosts(res.data);
+    };
+    getPosts();
+  }, []);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <Route exact path="/">
+        {posts.map((post) => (
+          <Post />
+        ))}
+      </Route>
+      <Route path="/new">
+        <Form />
+      </Route>
+      <Footer />
     </div>
   );
 }
