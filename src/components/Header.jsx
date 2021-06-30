@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./Header.css";
 
 function Header() {
@@ -17,12 +17,14 @@ function Header() {
         </h2>
       </div>
       <nav>
-        <Link className="nav-link" to="/">
+        {/* Implemented NavLinks so I could use the activeClassName attribute. 
+        Source: https://reactrouter.com/web/api/NavLink */}
+        <NavLink activeClassName="active" className="nav-link" exact to="/">
           Home
-        </Link>
-        <Link className="nav-link" to="/new">
+        </NavLink>
+        <NavLink activeClassName="active" className="nav-link" to="/new">
           New
-        </Link>
+        </NavLink>
       </nav>
     </header>
   );

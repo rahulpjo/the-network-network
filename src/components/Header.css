@@ -43,8 +43,7 @@ nav {
   font-size: 25px;
 }
 
-.nav-link:hover,
-.nav-link.active {
+.active {
   font-weight: bold;
   color: #ffd57f;
 }

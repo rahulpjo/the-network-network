@@ -1,7 +1,7 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+// import axios from "axios";
+import { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { basePostsURL, config } from "../services";
+// import { basePostsURL, config } from "../services";
 import "./Post.css";
 
 function Post(props) {
@@ -14,9 +14,14 @@ function Post(props) {
   //   return () => {
   //     const addVotes = async () => {
   //       const url = `${basePostsURL}/${props.post.id}`;
-  //       await axios.put(basePostsURL, config);
+  //       const newVotes = {
+  //         fields: {
+  //           ...props.post.fields,
+  //           votes,
+  //         },
+  //       };
+  //       await axios.put(url, newVotes, config);
   //     };
-
   //     addVotes();
   //   };
   // }, []);

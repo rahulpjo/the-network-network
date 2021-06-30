@@ -34,7 +34,6 @@ function ViewPost(props) {
       const results = res.data.records.filter(
         (currNote) => currNote.fields.commentFor[0] === params.id
       );
-      console.log(results);
       setNotes(results);
     };
 
@@ -72,6 +71,7 @@ function ViewPost(props) {
 
       await axios.post(baseNotesURL, newNote, config);
       setToggleFetch(!toggleFetch);
+      setShow(!show);
     };
     addNote();
   };

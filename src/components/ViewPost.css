@@ -5,3 +5,17 @@
 hr {
   width: 80%;
 }
+
+.note-form > button {
+  border-radius: 6px;
+}
+
+.note-form > input {
+  border-radius: 3px;
+}
+
+.note-form > input:focus {
+  outline: 2px solid #ffd57f;
+  outline-offset: -3px;
+  overflow: hidden;
+}
