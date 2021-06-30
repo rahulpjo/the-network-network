@@ -86,7 +86,7 @@ function ViewPost(props) {
       </section>
       <section className="post">
         <h3>Notes</h3>
-        {notes ? (
+        {notes.length ? (
           notes.map((postNote) => <Note key={postNote.id} note={postNote} />)
         ) : (
           <h4>No notes yet</h4>

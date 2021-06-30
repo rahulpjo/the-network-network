@@ -10,6 +10,10 @@ header h1 {
   text-shadow: 5px 5px white;
 }
 
+.logo {
+  display: flex;
+  align-items: center;
+}
 .full-header {
   display: flex;
   flex-direction: column;
@@ -33,7 +37,6 @@ h2 > span {
 nav {
   display: flex;
   align-items: flex-end;
-  align-self: flex-end;
 }
 
 .nav-link {
@@ -46,4 +49,5 @@ nav {
 .active {
   font-weight: bold;
   color: #ffd57f;
+  text-shadow: 1px 1px rgba(255, 255, 255);
 }

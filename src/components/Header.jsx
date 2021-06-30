@@ -4,17 +4,19 @@ import "./Header.css";
 function Header() {
   return (
     <header>
-      <h1>TNN</h1>
-      <div className="full-header">
-        <h2>
-          <span>T</span>he
-        </h2>
-        <h2>
-          <span>N</span>etwork
-        </h2>
-        <h2>
-          <span>N</span>etwork
-        </h2>
+      <div className="logo">
+        <h1>TNN</h1>
+        <div className="full-header">
+          <h2>
+            <span>T</span>he
+          </h2>
+          <h2>
+            <span>N</span>etwork
+          </h2>
+          <h2>
+            <span>N</span>etwork
+          </h2>
+        </div>
       </div>
       <nav>
         {/* Implemented NavLinks so I could use the activeClassName attribute. 
