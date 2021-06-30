@@ -1,11 +1,25 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
+import { basePostsURL, config } from "../services";
 import "./Post.css";
 
 function Post(props) {
   const [votes, setVotes] = useState(props.post.fields.votes);
   const [downvote, setDownvote] = useState(false);
   const [upvote, setUpvote] = useState(false);
+  const history = useHistory();
+
+  // useEffect(() => {
+  //   return () => {
+  //     const addVotes = async () => {
+  //       const url = `${basePostsURL}/${props.post.id}`;
+  //       await axios.put(basePostsURL, config);
+  //     };
+
+  //     addVotes();
+  //   };
+  // }, []);
 
   const handleDownvote = () => {
     if (downvote) {
@@ -35,10 +49,14 @@ function Post(props) {
     }
   };
 
+  const handleSeeMore = () => {
+    history.push(`/view/${props.post.id}`);
+  };
+
   return (
     <article className="post">
       <div className="post-header">
-        <h3>{props.post.fields.postedBy}</h3>
+        <h3>{props.post.fields.username}</h3>
         <aside>
           <button
             className={downvote ? "selected" : null}
@@ -53,13 +71,8 @@ function Post(props) {
         </aside>
       </div>
       <p>{props.post.fields.text}</p>
-      <button>
-        <Link
-          onClick={() => props.setSelectedPost(props.post)}
-          to={`/view/${props.post.id}`}
-        >
-          <h3>See more</h3>
-        </Link>
+      <button onClick={handleSeeMore}>
+        <h3>See more</h3>
       </button>
     </article>
   );

@@ -45,10 +45,12 @@ h1 {
 .selected-post > .post > h3 {
   margin-top: 10px;
   color: #ffd57f;
+  font-size: 30px;
 }
 
 .selected-post > .post > h4 {
   margin-bottom: 20px;
+  font-size: 22px;
 }
 
 .post aside button.selected,

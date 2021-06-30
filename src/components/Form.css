@@ -9,12 +9,51 @@ form > button {
   background-color: #ffd57f;
   color: #001635;
   border: none;
+  margin-top: 20px;
+
   padding: 10px 0;
   justify-self: flex-end;
   align-self: flex-end;
 }
 
+.form {
+  background-color: #001635;
+  color: white;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
 .form h3 {
-  margin-left: 15px;
+  color: #ffd57f;
+  margin: 10px;
+  font-size: 30px;
+}
+
+.form h4 {
+  font-size: 22px;
+}
+
+.form input {
+  margin: 5px 10px 10px;
+  font-family: inherit;
   font-size: 20px;
+  padding: 5px;
+  border-radius: 6px;
+}
+
+.form textarea {
+  resize: none;
+  padding: 5px;
+  font-size: 16px;
+  font-family: inherit;
+  margin: 10px 10px;
+  width: 300px;
+  height: 100px;
+  border-radius: 6px;
+}
+
+.form input:focus,
+.form textarea:focus {
+  outline-color: #ffd57f;
+  outline-offset: -1px;
 }

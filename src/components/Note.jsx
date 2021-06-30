@@ -1,11 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Note.css";
 
 function Note(props) {
-  const [noteVotes, setNoteVotes] = useState(props.note.fields.votes);
+  const [noteVotes, setNoteVotes] = useState(0);
   const [downvote, setDownvote] = useState(false);
   const [upvote, setUpvote] = useState(false);
-
+  useEffect(() => {
+    if (props.note) {
+      setNoteVotes(props.note.fields.votes);
+    }
+  }, [props.note]);
   const handleDownvote = () => {
     if (downvote) {
       setNoteVotes(noteVotes + 1);
@@ -34,10 +38,10 @@ function Note(props) {
     }
   };
 
-  return (
+  return props.note ? (
     <article className="note">
       <div className="note-heading">
-        <h4>{props.note.fields.commentedBy}</h4>
+        <h4>{props.note.fields.username}</h4>
         <aside>
           <button
             className={downvote ? "selected" : null}
@@ -53,6 +57,8 @@ function Note(props) {
       </div>
       <p>{props.note.fields.text}</p>
     </article>
+  ) : (
+    <h4>Loading...</h4>
   );
 }
 

@@ -7,48 +7,39 @@ import Post from "./components/Post";
 import Form from "./components/Form";
 
 import "./App.css";
-import { baseNotesURL, basePostsURL, config } from "./services/index";
+import { basePostsURL, config } from "./services/index";
 import axios from "axios";
 import ViewPost from "./components/ViewPost";
 
 function App() {
   const [posts, setPosts] = useState([]);
-  const [notes, setNotes] = useState([]);
-  const [selectedPost, setSelectedPost] = useState([]);
+  const [toggleFetch, setToggleFetch] = useState(true);
+
   useEffect(() => {
     const getPosts = async () => {
       const res = await axios.get(basePostsURL, config);
       setPosts(res.data.records);
     };
-    const getNotes = async () => {
-      const res = await axios.get(baseNotesURL, config);
-      setNotes(res.data.records);
-    };
+
     getPosts();
-    getNotes();
-  }, []);
+  }, [toggleFetch]);
+
   return (
     <div className="App">
       <Header />
       <main>
         <Route exact path="/">
           {posts.length ? (
-            posts.map((post) => (
-              <Post
-                key={post.id}
-                post={post}
-                setSelectedPost={setSelectedPost}
-              />
-            ))
+            posts.map((post) => <Post key={post.id} post={post} />)
           ) : (
             <h2>Loading...</h2>
           )}
         </Route>
         <Route path="/new">
-          <Form />
+          <Form setToggleFetch={setToggleFetch} />
         </Route>
         <Route path="/view/:id">
-          <ViewPost selectedPost={selectedPost} notes={notes} />
+          <ViewPost posts={posts} />
         </Route>
       </main>
       <Footer />
