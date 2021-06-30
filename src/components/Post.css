@@ -1,0 +1,77 @@
+.post {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #001635;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 10px 0;
+}
+
+.post aside {
+  display: flex;
+  flex-direction: row;
+  background-color: #ffd57f;
+  color: #001635;
+  padding: 10px;
+}
+
+.post aside * {
+  margin: 0 3px;
+}
+.post aside button {
+  color: #0016359f;
+}
+.post aside button:hover,
+.post aside button.selected {
+  color: #001635;
+}
+
+.post aside h4 {
+  font-size: 22px;
+  margin-bottom: 4px;
+}
+
+.post > button {
+  width: 100%;
+  cursor: pointer;
+  background-color: #ffd57f;
+  color: #001635;
+  border: none;
+  padding: 10px 0;
+  justify-self: flex-end;
+  align-self: flex-end;
+}
+
+.post > button * {
+  color: #001635;
+}
+
+.post > p {
+  background-color: white;
+  color: #001635;
+  padding: 10px;
+  margin: 15px;
+  border-radius: 6px;
+}
+
+.post-header {
+  display: flex;
+  background-color: #001635;
+  color: #ffd57f;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.post-header h3 {
+  margin-left: 15px;
+  font-size: 20px;
+}
+
+.post-header button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}

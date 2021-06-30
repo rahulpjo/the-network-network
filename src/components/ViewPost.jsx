@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Comment from "./Comment";
+import Note from "./Note";
 function ViewPost(props) {
   const [time, setTime] = useState("");
   const [date, setDate] = useState("");
@@ -39,7 +39,7 @@ function ViewPost(props) {
           <i className="fab fa-plus"></i>
         </h3>
         {props.selectedPost.fields.comments.map((comment) => (
-          <Comment
+          <Note
             key={comment}
             note={props.notes.find((note) => note.id === comment.toString())}
           />

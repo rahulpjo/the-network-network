@@ -1,0 +1,50 @@
+header {
+  display: flex;
+  align-items: center;
+  background-color: #001635;
+  padding: 20px;
+}
+
+header h1 {
+  border-right: 1px solid white;
+  text-shadow: 5px 5px white;
+}
+
+.full-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0 20px;
+}
+
+.full-header h2 {
+  margin: -5px;
+  font-size: 30px;
+}
+
+header h2 {
+  color: white;
+}
+
+h2 > span {
+  color: #ffd57f;
+}
+
+nav {
+  display: flex;
+  align-items: flex-end;
+  align-self: flex-end;
+}
+
+.nav-link {
+  text-decoration: none;
+  padding: 20px;
+  color: white;
+  font-size: 25px;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  font-weight: bold;
+  color: #ffd57f;
+}

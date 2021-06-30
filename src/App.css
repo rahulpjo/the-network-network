@@ -18,30 +18,6 @@ main {
   overflow: scroll;
 }
 
-header {
-  display: flex;
-  align-items: center;
-  background-color: #001635;
-  padding: 20px;
-}
-
-header h1 {
-  border-right: 1px solid white;
-  text-shadow: 5px 5px white;
-}
-
-.full-header {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin: 0 20px;
-}
-
-.full-header h2 {
-  margin: -5px;
-  font-size: 30px;
-}
-
 h1,
 h2,
 h3,
@@ -56,112 +32,6 @@ h1 {
   font-size: 90px;
   padding: 0 20px;
   color: #ffd57f;
-}
-
-header h2 {
-  color: white;
-}
-
-h2 > span {
-  color: #ffd57f;
-}
-
-nav {
-  display: flex;
-  align-items: flex-end;
-  align-self: flex-end;
-}
-
-.nav-link {
-  text-decoration: none;
-  padding: 20px;
-  color: white;
-  font-size: 25px;
-}
-
-.nav-link:hover,
-.nav-link.active {
-  font-weight: bold;
-  color: #ffd57f;
-}
-
-.post {
-  width: 300px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #001635;
-  border-radius: 10px;
-  overflow: hidden;
-  margin: 10px 0;
-}
-
-.post aside {
-  display: flex;
-  flex-direction: row;
-  background-color: #ffd57f;
-  color: #001635;
-  padding: 10px;
-}
-
-.post aside * {
-  margin: 0 3px;
-}
-.post aside button {
-  color: #0016359f;
-}
-.post aside button:hover,
-.post aside button.selected {
-  color: #001635;
-}
-
-.post aside h4 {
-  font-size: 22px;
-  margin-bottom: 4px;
-}
-
-.post > button,
-form > button {
-  width: 100%;
-  cursor: pointer;
-  background-color: #ffd57f;
-  color: #001635;
-  border: none;
-  padding: 10px 0;
-  justify-self: flex-end;
-  align-self: flex-end;
-}
-
-.post > button * {
-  color: #001635;
-}
-
-.post > p {
-  background-color: white;
-  color: #001635;
-  padding: 10px;
-  margin: 15px;
-  border-radius: 6px;
-}
-
-.post-header {
-  display: flex;
-  background-color: #001635;
-  color: #ffd57f;
-  width: 100%;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.post-header h3 {
-  margin-left: 15px;
-  font-size: 20px;
-}
-
-.post-header button {
-  background: none;
-  border: none;
-  cursor: pointer;
 }
 
 .selected-post {
@@ -181,54 +51,7 @@ form > button {
   margin-bottom: 20px;
 }
 
-.comment {
-  background-color: white;
+.post aside button.selected,
+.note-heading button.selected {
   color: #001635;
-  margin: 10px;
-  padding: 5px 10px 10px;
-  text-align: left;
-  border-radius: 6px;
-}
-
-.comment-heading {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.comment-heading aside {
-  background-color: white;
-  margin: 0 7px;
-}
-
-.comment-heading button {
-  background: none;
-  border: none;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-}
-.form h3 {
-  margin-left: 15px;
-  font-size: 20px;
-}
-
-footer {
-  background-color: #ffd57f;
-  color: #001635;
-  width: 100%;
-  padding: 10px;
-  position: absolute;
-  bottom: 0;
-}
-
-footer > h4 {
-  margin-bottom: 5px;
-}
-
-footer .social-icon {
-  color: #001635;
-  text-decoration: none;
-  padding: 0 15px;
 }
