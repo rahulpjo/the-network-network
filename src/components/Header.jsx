@@ -21,7 +21,7 @@ function Header() {
       <nav>
         {/* Implemented NavLinks so I could use the activeClassName attribute. 
         Source: https://reactrouter.com/web/api/NavLink */}
-        <NavLink activeClassName="active" className="nav-link" exact to="/">
+        <NavLink activeClassName="active" className="nav-link" exact to="/home">
           Home
         </NavLink>
         <NavLink activeClassName="active" className="nav-link" to="/new">

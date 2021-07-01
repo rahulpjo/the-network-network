@@ -1,56 +1,51 @@
-// import axios from "axios";
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-// import { basePostsURL, config } from "../services";
+import { basePostsURL, config } from "../services";
 import "./Post.css";
 
 function Post(props) {
   const [votes, setVotes] = useState(props.post.fields.votes);
-  const [downvote, setDownvote] = useState(false);
-  const [upvote, setUpvote] = useState(false);
+  const [voteValue, setVoteValue] = useState(null);
   const history = useHistory();
 
-  // useEffect(() => {
-  //   return () => {
-  //     const addVotes = async () => {
-  //       const url = `${basePostsURL}/${props.post.id}`;
-  //       const newVotes = {
-  //         fields: {
-  //           ...props.post.fields,
-  //           votes,
-  //         },
-  //       };
-  //       await axios.put(url, newVotes, config);
-  //     };
-  //     addVotes();
-  //   };
-  // }, []);
+  useEffect(() => {
+    const addVotes = async () => {
+      const url = `${basePostsURL}/${props.post.id}`;
+      const newVotes = {
+        fields: {
+          ...props.post.fields,
+          votes,
+        },
+      };
+      await axios.put(url, newVotes, config);
+    };
+    addVotes();
+  }, []);
 
   const handleDownvote = () => {
-    if (downvote) {
+    if (!voteValue && voteValue !== null) {
       setVotes(votes + 1);
-      setDownvote(false);
-    } else if (upvote) {
+      setVoteValue(null);
+    } else if (voteValue) {
       setVotes(votes - 2);
-      setUpvote(false);
-      setDownvote(true);
+      setVoteValue(false);
     } else {
       setVotes(votes - 1);
-      setDownvote(true);
+      setVoteValue(false);
     }
   };
 
   const handleUpvote = () => {
-    if (upvote) {
+    if (voteValue) {
       setVotes(votes - 1);
-      setUpvote(false);
-    } else if (downvote) {
+      setVoteValue(null);
+    } else if (!voteValue && voteValue !== null) {
       setVotes(votes + 2);
-      setUpvote(true);
-      setDownvote(false);
+      setVoteValue(true);
     } else {
       setVotes(votes + 1);
-      setUpvote(true);
+      setVoteValue(true);
     }
   };
 
@@ -64,13 +59,16 @@ function Post(props) {
         <h3>{props.post.fields.username}</h3>
         <aside>
           <button
-            className={downvote ? "selected" : null}
+            className={!voteValue && voteValue !== null ? "selected" : null}
             onClick={handleDownvote}
           >
             &#9660;
           </button>
           <h4>{votes > 0 ? `+${votes}` : votes}</h4>
-          <button className={upvote ? "selected" : null} onClick={handleUpvote}>
+          <button
+            className={voteValue && voteValue !== null ? "selected" : null}
+            onClick={handleUpvote}
+          >
             &#9650;
           </button>
         </aside>

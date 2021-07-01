@@ -119,9 +119,9 @@ https://api.airtable.com/v0/AIRTABLE_BASE_ID/posts?api_key=YOUR_API_KEY
 | ---------- | --------------------------------------------- | ---------- |
 | June 28-29 | Prompt / Wireframes / Timeframes              | Complete   |
 | June 29    | Project Approval                              | Complete   |
-| June 30    | Core Application Structure (React, CSS, etc.) | Incomplete |
-| July 1     | Axios Requests/Form Handling/Rendering        | Incomplete |
-| July 2     | MVP/Deployment                                | Incomplete |
+| June 30    | Core Application Structure (React, CSS, etc.) | Complete   |
+| July 1     | Axios Requests/Form Handling/Rendering        | Complete   |
+| July 2     | MVP/Deployment                                | Complete   |
 | July 6     | Post-MVP                                      | Incomplete |
 | July 7     | Presentations                                 | Incomplete |
 
@@ -131,17 +131,17 @@ https://api.airtable.com/v0/AIRTABLE_BASE_ID/posts?api_key=YOUR_API_KEY
 | ----------------------------- | :------: | :------------: | :-----------: | :---------: |
 | Prep/Planning                 |    H     |      3hrs      |     3hrs      |    3hrs     |
 | Wireframes/Logo Design        |    H     |     2.5hrs     |     2hrs      |    2hrs     |
-| Initial React Structure       |    H     |     2.5hrs     |     2hrs      |             |
+| Initial React Structure       |    H     |     2.5hrs     |    2.5hrs     |             |
 | Page Styling                  |    M     |      2hrs      |     2hrs      |             |
 | Component Styling             |    M     |     2.5hrs     |     3hrs      |             |
-| Routing Setup                 |    H     |     1.5hrs     |      1hr      |             |
-| Airtable Setup                |    H     |      2hrs      |               |             |
-| Axios Requests                |    H     |      3hrs      |               |             |
-| Responsiveness                |    M     |      2hrs      |               |             |
-| Posts Rendering               |    H     |     2.5hrs     |               |             |
+| Routing Setup                 |    H     |     1.5hrs     |    1.5hrs     |             |
+| Airtable Setup                |    H     |      2hrs      |    1.5hrs     |             |
+| Axios Requests                |    H     |      3hrs      |     2hrs      |             |
+| Responsiveness                |    M     |      2hrs      |      1hr      |             |
+| Posts Rendering               |    H     |     2.5hrs     |    1.5hrs     |             |
 | Auxiliary Component Rendering |    H     |      3hrs      |               |             |
-| Form Setup                    |    M     |     2.5hrs     |               |             |
-| Form Handling                 |    H     |      3hrs      |               |             |
+| Form Setup                    |    M     |     2.5hrs     |      1hr      |             |
+| Form Handling                 |    H     |      3hrs      |     2hrs      |             |
 | Favorites Page Setup          |    L     |      3hrs      |               |             |
 | Debugging                     |    M     |      3hrs      |               |             |
 | Animation                     |    L     |      2hrs      |               |             |

@@ -5,6 +5,56 @@
   text-decoration: none;
 }
 
+.entry {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #001635;
+  color: #ffd57f;
+  opacity: 1;
+  transition: opacity 2s ease-in-out;
+}
+
+.entry h2 {
+  font-size: 40px;
+}
+
+.entry h3 {
+  font-size: 30px;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.entry input {
+  font-size: 30px;
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  border: 2px solid #001635;
+  overflow: hidden;
+}
+
+.entry input:focus {
+  border: 2px solid #ffd57f;
+  outline: none;
+}
+
+.entry button {
+  margin-bottom: 200px;
+  font-weight: bold;
+  box-shadow: 3px 3px white;
+  border-radius: 6px;
+}
+
+.welcome-logo {
+  width: 300px;
+}
 .App {
   text-align: center;
 }
