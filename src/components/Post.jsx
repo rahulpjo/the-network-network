@@ -8,7 +8,7 @@ function Post(props) {
   const [votes, setVotes] = useState(props.post.fields.votes);
   const [voteValue, setVoteValue] = useState(null);
   const history = useHistory();
-
+  console.log(props.post);
   useEffect(() => {
     const addVotes = async () => {
       const url = `${basePostsURL}/${props.post.id}`;
@@ -34,6 +34,16 @@ function Post(props) {
       setVotes(votes - 1);
       setVoteValue(false);
     }
+
+    // if (localStorage.length === 1) {
+    //   localStorage.setItem("favorites", JSON.stringify(props.post));
+    //   console.log(localStorage);
+    // } else {
+    //   const favoritesArray = localStorage.favorites;
+    //   favoritesArray.push(props.post);
+    //   localStorage.setItem("favorites", favoritesArray);
+    //   console.log(localStorage);
+    // }
   };
 
   const handleUpvote = () => {
@@ -47,6 +57,15 @@ function Post(props) {
       setVotes(votes + 1);
       setVoteValue(true);
     }
+
+    if (localStorage.length === 1) {
+      localStorage.setItem("favorites", [props.post]);
+    } else {
+      const favoritesArray = localStorage.favorites;
+      favoritesArray.push(props.post);
+      localStorage.setItem("favorites", favoritesArray);
+    }
+    console.log(localStorage);
   };
 
   const handleSeeMore = () => {

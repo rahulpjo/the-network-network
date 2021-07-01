@@ -59,6 +59,17 @@
   text-align: center;
 }
 
+.App > h2 {
+  text-align: left;
+  background-color: #ffd57f;
+  color: #001635;
+  border-radius: 0 0 16px 16px;
+  position: relative;
+  top: 20px;
+  padding: 20px;
+  display: inline;
+}
+
 main {
   display: flex;
   flex-flow: row wrap;

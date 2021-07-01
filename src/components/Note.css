@@ -1,10 +1,11 @@
 .note {
   background-color: white;
   color: #001635;
-  margin: 10px;
+  margin: 5px 10px;
   padding: 5px 10px 10px;
   text-align: left;
   border-radius: 6px;
+  width: 90%;
 }
 
 .note-heading {
@@ -13,11 +14,21 @@
   align-items: center;
 }
 .note-heading aside {
-  background-color: white;
+  background-color: white !important;
   margin: 0 7px;
 }
 
 .note-heading button {
   background: none;
+  border: none;
+}
+
+.note-form label:last-of-type {
+  margin-top: 10px;
+}
+
+.note-form input {
+  padding: 5px;
+  margin-top: 5px;
   border: none;
 }

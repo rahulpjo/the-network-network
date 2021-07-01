@@ -1,0 +1,14 @@
+.back-button {
+  text-align: left;
+  background-color: #ffd57f;
+  color: #001635;
+  border-radius: 0 0 16px 0;
+  border: none;
+  padding: 20px;
+  display: inline;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+  cursor: pointer;
+  font-size: 20px;
+}

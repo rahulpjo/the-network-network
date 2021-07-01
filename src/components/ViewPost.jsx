@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import BackButton from "./BackButton";
 import NoteList from "./NoteList";
 import "./ViewPost.css";
 
@@ -38,15 +39,20 @@ function ViewPost(props) {
   };
 
   return post.fields ? (
-    <article className="selected-post">
-      <section className="post">
-        <h3>{post.fields.username}</h3>
-        <h5>{`${time} • ${date}`}</h5>
-        <p>{post.fields.text}</p>
-        <h4>{post.fields.votes} votes</h4>
-      </section>
-      <NoteList id={params.id} post={post} />
-    </article>
+    <>
+      <BackButton />
+      <main>
+        <article className="selected-post">
+          <section className="post">
+            <h3>{post.fields.username}</h3>
+            <h5>{`${time} • ${date}`}</h5>
+            <p>{post.fields.text}</p>
+            <h4>{post.fields.votes} votes</h4>
+          </section>
+          <NoteList id={params.id} post={post} />
+        </article>
+      </main>
+    </>
   ) : (
     <h2>Loading...</h2>
   );

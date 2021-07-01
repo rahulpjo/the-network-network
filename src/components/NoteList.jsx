@@ -2,11 +2,12 @@ import { useEffect, useState } from "react";
 import { baseNotesURL, config } from "../services";
 import axios from "axios";
 import Note from "./Note";
+import "./Note.css";
 
 function NoteList(props) {
   const [notes, setNotes] = useState([]);
   const [show, setShow] = useState(false);
-  const [username, setUsername] = useState("");
+  const [username, setUsername] = useState(localStorage.username);
   const [note, setNote] = useState("");
   const [toggleFetch, setToggleFetch] = useState(true);
 
