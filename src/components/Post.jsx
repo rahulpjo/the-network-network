@@ -8,64 +8,121 @@ function Post(props) {
   const [votes, setVotes] = useState(props.post.fields.votes);
   const [voteValue, setVoteValue] = useState(null);
   const history = useHistory();
-  console.log(props.post);
+
   useEffect(() => {
-    const addVotes = async () => {
-      const url = `${basePostsURL}/${props.post.id}`;
-      const newVotes = {
-        fields: {
-          ...props.post.fields,
-          votes,
-        },
-      };
-      await axios.put(url, newVotes, config);
+    if (
+      localStorage.favorites &&
+      JSON.parse(localStorage.favorites).filter(
+        (favorite) => favorite.id === props.post.id
+      ).length
+    ) {
+      setVoteValue(true);
+    }
+
+    if (
+      localStorage.disliked &&
+      JSON.parse(localStorage.disliked).filter(
+        (disliked) => disliked.id === props.post.id
+      ).length
+    ) {
+      setVoteValue(false);
+    }
+  }, [props.post.id]);
+
+  const addVotes = async () => {
+    const url = `${basePostsURL}/${props.post.id}`;
+    const newVotes = {
+      fields: {
+        ...props.post.fields,
+        votes,
+      },
     };
-    addVotes();
-  }, []);
+    await axios.put(url, newVotes, config);
+    setTimeout(() => {
+      props.setToggleFetch((curr) => !curr);
+    }, 500);
+  };
 
   const handleDownvote = () => {
     if (!voteValue && voteValue !== null) {
       setVotes(votes + 1);
       setVoteValue(null);
+      removeFromDisliked();
     } else if (voteValue) {
       setVotes(votes - 2);
       setVoteValue(false);
+      removeFromFavorites();
+      addToDisliked();
     } else {
       setVotes(votes - 1);
       setVoteValue(false);
+      addToDisliked();
     }
-
-    // if (localStorage.length === 1) {
-    //   localStorage.setItem("favorites", JSON.stringify(props.post));
-    //   console.log(localStorage);
-    // } else {
-    //   const favoritesArray = localStorage.favorites;
-    //   favoritesArray.push(props.post);
-    //   localStorage.setItem("favorites", favoritesArray);
-    //   console.log(localStorage);
-    // }
+    addVotes();
   };
 
   const handleUpvote = () => {
     if (voteValue) {
       setVotes(votes - 1);
       setVoteValue(null);
+      removeFromFavorites();
     } else if (!voteValue && voteValue !== null) {
       setVotes(votes + 2);
       setVoteValue(true);
+      addToFavorites();
+      removeFromDisliked();
     } else {
       setVotes(votes + 1);
       setVoteValue(true);
+      addToFavorites();
     }
+    addVotes();
+  };
 
-    if (localStorage.length === 1) {
-      localStorage.setItem("favorites", [props.post]);
+  const addToFavorites = () => {
+    if (localStorage.length < 2) {
+      localStorage.setItem("favorites", JSON.stringify([props.post]));
+      console.log(JSON.parse(localStorage.getItem("favorites")));
     } else {
-      const favoritesArray = localStorage.favorites;
+      console.log(localStorage.favorites);
+      let favoritesArray = JSON.parse(localStorage.favorites);
       favoritesArray.push(props.post);
-      localStorage.setItem("favorites", favoritesArray);
+      localStorage.setItem("favorites", JSON.stringify(favoritesArray));
+      console.log(JSON.parse(localStorage.getItem("favorites")));
     }
     console.log(localStorage);
+  };
+
+  const addToDisliked = () => {
+    if (localStorage.getItem("disliked")) {
+      console.log(localStorage.disliked);
+      let dislikedArray = JSON.parse(localStorage.disliked);
+      dislikedArray.push(props.post);
+      localStorage.setItem("disliked", JSON.stringify(dislikedArray));
+      console.log(JSON.parse(localStorage.getItem("disliked")));
+    } else {
+      localStorage.setItem("disliked", JSON.stringify([props.post]));
+      console.log(JSON.parse(localStorage.getItem("disliked")));
+    }
+    console.log(localStorage);
+  };
+
+  const removeFromFavorites = () => {
+    let favoritesArray = JSON.parse(localStorage.favorites);
+    let newArray = favoritesArray.filter(
+      (favorite) => favorite.id !== props.post.id
+    );
+    localStorage.setItem("favorites", JSON.stringify(newArray));
+    console.log(JSON.parse(localStorage.getItem("favorites")));
+  };
+
+  const removeFromDisliked = () => {
+    let dislikedArray = JSON.parse(localStorage.disliked);
+    let newArray = dislikedArray.filter(
+      (disliked) => disliked.id !== props.post.id
+    );
+    localStorage.setItem("disliked", JSON.stringify(newArray));
+    console.log(JSON.parse(localStorage.getItem("disliked")));
   };
 
   const handleSeeMore = () => {

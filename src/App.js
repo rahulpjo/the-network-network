@@ -23,11 +23,13 @@ function App() {
     };
 
     getPosts();
+  }, [toggleFetch]);
 
+  useEffect(() => {
     return () => {
       localStorage.clear();
     };
-  }, [toggleFetch]);
+  }, []);
 
   return (
     <div className="App">
@@ -36,7 +38,7 @@ function App() {
         <Welcome />
       </Route>
       <Route path="/home">
-        <Home posts={posts} />
+        <Home posts={posts} setToggleFetch={setToggleFetch} />
       </Route>
       <Route path="/new">
         <Form setToggleFetch={setToggleFetch} />
