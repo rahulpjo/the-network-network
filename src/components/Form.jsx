@@ -6,7 +6,7 @@ import BackButton from "./BackButton";
 import "./Form.css";
 
 function Form(props) {
-  const [username, setUsername] = useState(localStorage.username);
+  const [username, setUsername] = useState(sessionStorage.username);
   const [text, setText] = useState("");
   const history = useHistory();
 

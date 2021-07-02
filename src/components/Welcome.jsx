@@ -10,8 +10,7 @@ function Welcome() {
   };
 
   useEffect(() => {
-    localStorage.setItem("username", username);
-    console.log(localStorage);
+    sessionStorage.setItem("username", username);
   }, [username]);
 
   return (

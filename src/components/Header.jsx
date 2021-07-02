@@ -27,7 +27,11 @@ function Header() {
         <NavLink activeClassName="active" className="nav-link" to="/new">
           New
         </NavLink>
+        <NavLink activeClassName="active" className="nav-link" to="/favorites">
+          Favorites
+        </NavLink>
       </nav>
+      <button>End Session</button>
     </header>
   );
 }

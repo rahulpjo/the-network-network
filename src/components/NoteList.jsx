@@ -7,7 +7,7 @@ import "./Note.css";
 function NoteList(props) {
   const [notes, setNotes] = useState([]);
   const [show, setShow] = useState(false);
-  const [username, setUsername] = useState(localStorage.username);
+  const [username, setUsername] = useState(sessionStorage.username);
   const [note, setNote] = useState("");
   const [toggleFetch, setToggleFetch] = useState(true);
 

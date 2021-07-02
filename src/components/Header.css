@@ -51,3 +51,7 @@ nav {
   color: #ffd57f;
   text-shadow: 1px 1px rgba(255, 255, 255);
 }
+
+header > button {
+  align-self: flex-end;
+}

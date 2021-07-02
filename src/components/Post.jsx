@@ -7,41 +7,47 @@ import "./Post.css";
 function Post(props) {
   const [votes, setVotes] = useState(props.post.fields.votes);
   const [voteValue, setVoteValue] = useState(null);
+  const { post, setToggleFetch } = props;
   const history = useHistory();
 
   useEffect(() => {
     if (
-      localStorage.favorites &&
-      JSON.parse(localStorage.favorites).filter(
-        (favorite) => favorite.id === props.post.id
+      sessionStorage.favorites &&
+      JSON.parse(sessionStorage.favorites).length &&
+      JSON.parse(sessionStorage.favorites).filter(
+        (favorite) => favorite.id === post.id
       ).length
     ) {
       setVoteValue(true);
     }
 
     if (
-      localStorage.disliked &&
-      JSON.parse(localStorage.disliked).filter(
-        (disliked) => disliked.id === props.post.id
+      sessionStorage.disliked &&
+      JSON.parse(sessionStorage.disliked).length &&
+      JSON.parse(sessionStorage.disliked).filter(
+        (disliked) => disliked.id === post.id
       ).length
     ) {
       setVoteValue(false);
     }
-  }, [props.post.id]);
 
-  const addVotes = async () => {
-    const url = `${basePostsURL}/${props.post.id}`;
-    const newVotes = {
-      fields: {
-        ...props.post.fields,
-        votes,
-      },
-    };
-    await axios.put(url, newVotes, config);
-    setTimeout(() => {
-      props.setToggleFetch((curr) => !curr);
-    }, 500);
-  };
+    if (post.fields.votes !== votes) {
+      const addVotes = async () => {
+        const url = `${basePostsURL}/${post.id}`;
+        const newVotes = {
+          fields: {
+            ...post.fields,
+            votes,
+          },
+        };
+        await axios.put(url, newVotes, config);
+        setTimeout(() => {
+          setToggleFetch((curr) => !curr);
+        }, 500);
+      };
+      addVotes();
+    }
+  }, [post.id, post.fields, votes]);
 
   const handleDownvote = () => {
     if (!voteValue && voteValue !== null) {
@@ -58,7 +64,6 @@ function Post(props) {
       setVoteValue(false);
       addToDisliked();
     }
-    addVotes();
   };
 
   const handleUpvote = () => {
@@ -69,60 +74,53 @@ function Post(props) {
     } else if (!voteValue && voteValue !== null) {
       setVotes(votes + 2);
       setVoteValue(true);
-      addToFavorites();
+
       removeFromDisliked();
     } else {
       setVotes(votes + 1);
       setVoteValue(true);
       addToFavorites();
     }
-    addVotes();
   };
 
   const addToFavorites = () => {
-    if (localStorage.length < 2) {
-      localStorage.setItem("favorites", JSON.stringify([props.post]));
-      console.log(JSON.parse(localStorage.getItem("favorites")));
+    let newPost = props.post;
+    newPost.fields.votes = votes;
+    if (!sessionStorage.favorites) {
+      sessionStorage.setItem("favorites", JSON.stringify([newPost]));
     } else {
-      console.log(localStorage.favorites);
-      let favoritesArray = JSON.parse(localStorage.favorites);
-      favoritesArray.push(props.post);
-      localStorage.setItem("favorites", JSON.stringify(favoritesArray));
-      console.log(JSON.parse(localStorage.getItem("favorites")));
+      let favoritesArray = JSON.parse(sessionStorage.favorites);
+      favoritesArray.push(newPost);
+      sessionStorage.setItem("favorites", JSON.stringify(favoritesArray));
     }
-    console.log(localStorage);
   };
 
   const addToDisliked = () => {
-    if (localStorage.getItem("disliked")) {
-      console.log(localStorage.disliked);
-      let dislikedArray = JSON.parse(localStorage.disliked);
-      dislikedArray.push(props.post);
-      localStorage.setItem("disliked", JSON.stringify(dislikedArray));
-      console.log(JSON.parse(localStorage.getItem("disliked")));
+    let newPost = props.post;
+    newPost.fields.votes = votes;
+    if (sessionStorage.getItem("disliked")) {
+      let dislikedArray = JSON.parse(sessionStorage.disliked);
+      dislikedArray.push(newPost);
+      sessionStorage.setItem("disliked", JSON.stringify(dislikedArray));
     } else {
-      localStorage.setItem("disliked", JSON.stringify([props.post]));
-      console.log(JSON.parse(localStorage.getItem("disliked")));
+      sessionStorage.setItem("disliked", JSON.stringify([newPost]));
     }
-    console.log(localStorage);
   };
 
   const removeFromFavorites = () => {
-    let favoritesArray = JSON.parse(localStorage.favorites);
+    let favoritesArray = JSON.parse(sessionStorage.favorites);
     let newArray = favoritesArray.filter(
       (favorite) => favorite.id !== props.post.id
     );
-    localStorage.setItem("favorites", JSON.stringify(newArray));
-    console.log(JSON.parse(localStorage.getItem("favorites")));
+    sessionStorage.setItem("favorites", JSON.stringify(newArray));
   };
 
   const removeFromDisliked = () => {
-    let dislikedArray = JSON.parse(localStorage.disliked);
+    let dislikedArray = JSON.parse(sessionStorage.disliked);
     let newArray = dislikedArray.filter(
       (disliked) => disliked.id !== props.post.id
     );
-    localStorage.setItem("disliked", JSON.stringify(newArray));
-    console.log(JSON.parse(localStorage.getItem("disliked")));
+    sessionStorage.setItem("disliked", JSON.stringify(newArray));
   };
 
   const handleSeeMore = () => {
