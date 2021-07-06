@@ -48,7 +48,13 @@ function NoteList(props) {
     <section className="post">
       <h3>Notes</h3>
       {notes.length ? (
-        notes.map((postNote) => <Note key={postNote.id} note={postNote} />)
+        notes.map((postNote) => (
+          <Note
+            key={postNote.id}
+            note={postNote}
+            setToggleFetch={setToggleFetch}
+          />
+        ))
       ) : (
         <h4>No notes yet</h4>
       )}

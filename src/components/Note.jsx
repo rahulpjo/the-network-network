@@ -1,61 +1,144 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
+import { baseNotesURL, config } from "../services";
 import "./Note.css";
 
 function Note(props) {
-  const [noteVotes, setNoteVotes] = useState(0);
-  const [downvote, setDownvote] = useState(false);
-  const [upvote, setUpvote] = useState(false);
+  const { note, setToggleFetch } = props;
+  const [noteVotes, setNoteVotes] = useState(note.fields.votes);
+  const [noteVoteValue, setNoteVoteValue] = useState(null);
+
   useEffect(() => {
-    if (props.note) {
-      setNoteVotes(props.note.fields.votes);
+    if (
+      sessionStorage.favoriteNotes &&
+      JSON.parse(sessionStorage.favoriteNotes).length &&
+      JSON.parse(sessionStorage.favoriteNotes).filter(
+        (favorite) => favorite === note.id
+      ).length
+    ) {
+      setNoteVoteValue(true);
     }
-  }, [props.note]);
+
+    if (
+      sessionStorage.dislikedNotes &&
+      JSON.parse(sessionStorage.dislikedNotes).length &&
+      JSON.parse(sessionStorage.dislikedNotes).filter(
+        (disliked) => disliked === note.id
+      ).length
+    ) {
+      setNoteVoteValue(false);
+    }
+
+    if (note.fields.votes !== noteVotes) {
+      const addVotes = async () => {
+        const url = `${baseNotesURL}/${note.id}`;
+        const newVotes = {
+          fields: {
+            ...note.fields,
+            votes: noteVotes,
+          },
+        };
+        console.log(newVotes);
+        await axios.put(url, newVotes, config);
+        setTimeout(() => {
+          setToggleFetch((curr) => !curr);
+        }, 500);
+      };
+      addVotes();
+    }
+  }, [note.id, note.fields, noteVotes, setToggleFetch]);
+
   const handleDownvote = () => {
-    if (downvote) {
+    if (!noteVoteValue && noteVoteValue !== null) {
       setNoteVotes(noteVotes + 1);
-      setDownvote(false);
-    } else if (upvote) {
+      setNoteVoteValue(null);
+      removeFromDisliked();
+    } else if (noteVoteValue) {
       setNoteVotes(noteVotes - 2);
-      setUpvote(false);
-      setDownvote(true);
+      setNoteVoteValue(false);
+      removeFromFavorites();
+      addToDisliked();
     } else {
       setNoteVotes(noteVotes - 1);
-      setDownvote(true);
+      setNoteVoteValue(false);
+      addToDisliked();
     }
   };
 
   const handleUpvote = () => {
-    if (upvote) {
+    if (noteVoteValue) {
       setNoteVotes(noteVotes - 1);
-      setUpvote(false);
-    } else if (downvote) {
+      setNoteVoteValue(null);
+      removeFromFavorites();
+    } else if (!noteVoteValue && noteVoteValue !== null) {
       setNoteVotes(noteVotes + 2);
-      setUpvote(true);
-      setDownvote(false);
+      setNoteVoteValue(true);
+      addToFavorites();
+      removeFromDisliked();
     } else {
       setNoteVotes(noteVotes + 1);
-      setUpvote(true);
+      setNoteVoteValue(true);
+      addToFavorites();
     }
+  };
+
+  const addToFavorites = () => {
+    let newNote = note.id;
+    if (!sessionStorage.favoriteNotes) {
+      sessionStorage.setItem("favoriteNotes", JSON.stringify([newNote]));
+    } else {
+      let favoritesArray = JSON.parse(sessionStorage.favoriteNotes);
+      favoritesArray.push(newNote);
+      sessionStorage.setItem("favoriteNotes", JSON.stringify(favoritesArray));
+    }
+    console.log(sessionStorage);
+  };
+
+  const addToDisliked = () => {
+    let newNote = note.id;
+    if (sessionStorage.getItem("dislikedNotes")) {
+      let dislikedArray = JSON.parse(sessionStorage.dislikedNotes);
+      dislikedArray.push(newNote);
+      sessionStorage.setItem("dislikedNotes", JSON.stringify(dislikedArray));
+    } else {
+      sessionStorage.setItem("dislikedNotes", JSON.stringify([newNote]));
+    }
+    console.log(JSON.parse(sessionStorage.dislikedNotes));
+  };
+
+  const removeFromFavorites = () => {
+    let favoritesArray = JSON.parse(sessionStorage.favoriteNotes);
+    let newArray = favoritesArray.filter((favorite) => favorite !== note.id);
+    sessionStorage.setItem("favoriteNotes", JSON.stringify(newArray));
+  };
+
+  const removeFromDisliked = () => {
+    let dislikedArray = JSON.parse(sessionStorage.dislikedNotes);
+    let newArray = dislikedArray.filter((disliked) => disliked !== note.id);
+    sessionStorage.setItem("dislikedNotes", JSON.stringify(newArray));
   };
 
   return props.note ? (
     <article className="note">
       <div className="note-heading">
-        <h4>{props.note.fields.username}</h4>
+        <h4>{note.fields.username}</h4>
         <aside>
           <button
-            className={downvote ? "selected" : null}
+            className={noteVoteValue === false ? "selected" : null}
             onClick={handleDownvote}
           >
             &#9660;
           </button>
           <h5>{noteVotes}</h5>
-          <button className={upvote ? "selected" : null} onClick={handleUpvote}>
+          <button
+            className={noteVoteValue ? "selected" : null}
+            onClick={handleUpvote}
+          >
             &#9650;
           </button>
         </aside>
       </div>
-      <p>{props.note.fields.text}</p>
+      <p>{note.fields.text}</p>
     </article>
   ) : (
     <h4>Loading...</h4>

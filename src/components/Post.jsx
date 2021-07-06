@@ -25,7 +25,7 @@ function Post(props) {
       sessionStorage.disliked &&
       JSON.parse(sessionStorage.disliked).length &&
       JSON.parse(sessionStorage.disliked).filter(
-        (disliked) => disliked.id === post.id
+        (disliked) => disliked === post.id
       ).length
     ) {
       setVoteValue(false);
@@ -104,6 +104,7 @@ function Post(props) {
     } else {
       sessionStorage.setItem("disliked", JSON.stringify([newPost]));
     }
+    console.log(JSON.parse(sessionStorage.disliked));
   };
 
   const removeFromFavorites = () => {
