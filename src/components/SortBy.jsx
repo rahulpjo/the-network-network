@@ -17,7 +17,7 @@ function SortBy(props) {
     }
   };
   return (
-    <form className="sort-button" onChange={(e) => console.log(e)}>
+    <form className="sort-button" onChange={handleChange}>
       <h3>Sort By</h3>
       <input type="radio" id="sort-votes" name="sort" value="votes" />
       <label htmlFor="sort-votes"> Votes</label>

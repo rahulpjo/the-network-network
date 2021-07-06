@@ -1,18 +1,22 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import BackButton from "./BackButton";
 import Post from "./Post";
 
 function Favorites(props) {
-  const { setToggleFetch } = props;
+  const [favoritesArray, setFavoritesArray] = useState([]);
   useEffect(() => {
-    setToggleFetch((curr) => !curr);
-  }, [setToggleFetch]);
+    setFavoritesArray(
+      props.posts.filter((post) =>
+        JSON.parse(sessionStorage.getItem("favorites")).includes(post.id)
+      )
+    );
+  }, [props.posts]);
   return (
     <>
       <BackButton />
       <main>
-        {sessionStorage.favorites ? (
-          JSON.parse(sessionStorage.favorites).map((favorite) => (
+        {favoritesArray.length ? (
+          favoritesArray.map((favorite) => (
             <Post
               post={favorite}
               key={favorite.id}

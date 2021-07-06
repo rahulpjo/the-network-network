@@ -15,7 +15,7 @@ function Post(props) {
       sessionStorage.favorites &&
       JSON.parse(sessionStorage.favorites).length &&
       JSON.parse(sessionStorage.favorites).filter(
-        (favorite) => favorite.id === post.id
+        (favorite) => favorite === post.id
       ).length
     ) {
       setVoteValue(true);
@@ -47,7 +47,7 @@ function Post(props) {
       };
       addVotes();
     }
-  }, [post.id, post.fields, votes]);
+  }, [post.id, post.fields, votes, setToggleFetch]);
 
   const handleDownvote = () => {
     if (!voteValue && voteValue !== null) {
@@ -74,7 +74,7 @@ function Post(props) {
     } else if (!voteValue && voteValue !== null) {
       setVotes(votes + 2);
       setVoteValue(true);
-
+      addToFavorites();
       removeFromDisliked();
     } else {
       setVotes(votes + 1);
@@ -84,8 +84,7 @@ function Post(props) {
   };
 
   const addToFavorites = () => {
-    let newPost = props.post;
-    newPost.fields.votes = votes;
+    let newPost = props.post.id;
     if (!sessionStorage.favorites) {
       sessionStorage.setItem("favorites", JSON.stringify([newPost]));
     } else {
@@ -93,11 +92,11 @@ function Post(props) {
       favoritesArray.push(newPost);
       sessionStorage.setItem("favorites", JSON.stringify(favoritesArray));
     }
+    console.log(sessionStorage);
   };
 
   const addToDisliked = () => {
-    let newPost = props.post;
-    newPost.fields.votes = votes;
+    let newPost = props.post.id;
     if (sessionStorage.getItem("disliked")) {
       let dislikedArray = JSON.parse(sessionStorage.disliked);
       dislikedArray.push(newPost);
@@ -110,7 +109,7 @@ function Post(props) {
   const removeFromFavorites = () => {
     let favoritesArray = JSON.parse(sessionStorage.favorites);
     let newArray = favoritesArray.filter(
-      (favorite) => favorite.id !== props.post.id
+      (favorite) => favorite !== props.post.id
     );
     sessionStorage.setItem("favorites", JSON.stringify(newArray));
   };
@@ -118,7 +117,7 @@ function Post(props) {
   const removeFromDisliked = () => {
     let dislikedArray = JSON.parse(sessionStorage.disliked);
     let newArray = dislikedArray.filter(
-      (disliked) => disliked.id !== props.post.id
+      (disliked) => disliked !== props.post.id
     );
     sessionStorage.setItem("disliked", JSON.stringify(newArray));
   };

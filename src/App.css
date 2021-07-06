@@ -154,4 +154,7 @@ footer {
   footer {
     position: inherit;
   }
+  main {
+    height: auto;
+  }
 }

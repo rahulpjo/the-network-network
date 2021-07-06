@@ -30,13 +30,13 @@ function App() {
         />
       </Route>
       <Route path="/new">
-        <Form />
+        <Form setToggleFetch={setToggleFetch} />
       </Route>
       <Route path="/view/:id">
         <ViewPost posts={posts} />
       </Route>
       <Route path="/favorites">
-        <Favorites setToggleFetch={setToggleFetch} />
+        <Favorites setToggleFetch={setToggleFetch} posts={posts} />
       </Route>
       <Footer />
     </div>

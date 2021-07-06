@@ -24,7 +24,7 @@ function Form(props) {
       await axios.post(basePostsURL, newPost, config);
       props.setToggleFetch((curr) => !curr);
       setTimeout(() => {
-        history.push("/");
+        history.push("/home");
       }, 500);
     };
     addPost();

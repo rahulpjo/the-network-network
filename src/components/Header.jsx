@@ -31,7 +31,6 @@ function Header() {
           Favorites
         </NavLink>
       </nav>
-      <button>End Session</button>
     </header>
   );
 }
