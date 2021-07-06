@@ -5,11 +5,13 @@ import Post from "./Post";
 function Favorites(props) {
   const [favoritesArray, setFavoritesArray] = useState([]);
   useEffect(() => {
-    setFavoritesArray(
-      props.posts.filter((post) =>
-        JSON.parse(sessionStorage.getItem("favorites")).includes(post.id)
-      )
-    );
+    if (JSON.parse(sessionStorage.getItem("favorites")).length) {
+      setFavoritesArray(
+        props.posts.filter((post) =>
+          JSON.parse(sessionStorage.getItem("favorites")).includes(post.id)
+        )
+      );
+    }
     console.log(props.posts);
   }, [props.posts]);
   return (
@@ -24,8 +26,10 @@ function Favorites(props) {
               setToggleFetch={props.setToggleFetch}
             />
           ))
-        ) : (
+        ) : JSON.parse(sessionStorage.getItem("favorites")).length ? (
           <h2>Loading...</h2>
+        ) : (
+          <h2>No posts favorited yet!</h2>
         )}
       </main>
     </>
