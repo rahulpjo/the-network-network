@@ -131,22 +131,22 @@ https://api.airtable.com/v0/AIRTABLE_BASE_ID/posts?api_key=YOUR_API_KEY
 | ----------------------------- | :------: | :------------: | :-----------: | :---------: |
 | Prep/Planning                 |    H     |      3hrs      |     3hrs      |    3hrs     |
 | Wireframes/Logo Design        |    H     |     2.5hrs     |     2hrs      |    2hrs     |
-| Initial React Structure       |    H     |     2.5hrs     |    2.5hrs     |             |
-| Page Styling                  |    M     |      2hrs      |     2hrs      |             |
-| Component Styling             |    M     |     2.5hrs     |     3hrs      |             |
-| Routing Setup                 |    H     |     1.5hrs     |    1.5hrs     |             |
-| Airtable Setup                |    H     |      2hrs      |    1.5hrs     |             |
-| Axios Requests                |    H     |      3hrs      |     2hrs      |             |
-| Responsiveness                |    M     |      2hrs      |      1hr      |             |
-| Posts Rendering               |    H     |     2.5hrs     |    1.5hrs     |             |
-| Auxiliary Component Rendering |    H     |      3hrs      |               |             |
-| Form Setup                    |    M     |     2.5hrs     |      1hr      |             |
-| Form Handling                 |    H     |      3hrs      |     2hrs      |             |
-| Favorites Page Setup          |    L     |      3hrs      |               |             |
-| Debugging                     |    M     |      3hrs      |               |             |
+| Initial React Structure       |    H     |     2.5hrs     |    3.5hrs     |   3.5hrs    |
+| Page Styling                  |    M     |      2hrs      |     2hrs      |    2hrs     |
+| Component Styling             |    M     |     2.5hrs     |     3hrs      |    3hrs     |
+| Routing Setup                 |    H     |     1.5hrs     |    1.5hrs     |   1.5hrs    |
+| Airtable Setup                |    H     |      2hrs      |    1.5hrs     |   1.5hrs    |
+| Axios Requests                |    H     |      3hrs      |     3hrs      |    3hrs     |
+| Responsiveness                |    M     |      2hrs      |      1hr      |     1hr     |
+| Posts Rendering               |    H     |     2.5hrs     |    2.5hrs     |   2.5hrs    |
+| Auxiliary Component Rendering |    H     |      3hrs      |    2.5hrs     |   2.5hrs    |
+| Form Setup                    |    M     |     2.5hrs     |     2hrs      |    2hrs     |
+| Form Handling                 |    H     |      3hrs      |     2hrs      |    2hrs     |
+| Favorites Page Setup          |    L     |      3hrs      |     3hrs      |    3hrs     |
+| Debugging                     |    M     |      3hrs      |     3hrs      |    3hrs     |
 | Animation                     |    L     |      2hrs      |               |             |
-| Deployment                    |    H     |      2hrs      |               |             |
-| Total                         |          |     42hrs      |     13hrs     |    5hrs     |
+| Deployment                    |    H     |      2hrs      |      1hr      |     1hr     |
+| Total                         |          |     42hrs      |    36.5hrs    |   36.5hrs   |
 
 ## SWOT Analysis
 
