@@ -10,6 +10,7 @@ function Favorites(props) {
         JSON.parse(sessionStorage.getItem("favorites")).includes(post.id)
       )
     );
+    console.log(props.posts);
   }, [props.posts]);
   return (
     <>

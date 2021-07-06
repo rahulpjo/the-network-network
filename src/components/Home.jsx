@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { basePostsURL, config } from "../services";
 import Post from "./Post";
 import SortBy from "./SortBy";
+import "./Home.css";
 
 function Home(props) {
   const [username, setUsername] = useState("");
@@ -24,7 +25,7 @@ function Home(props) {
     <>
       <SortBy posts={posts} setPosts={setPosts} />
       <h2>Hello {username}!</h2>
-      <main>
+      <main id="home">
         {posts.length ? (
           posts.map((post) => (
             <Post key={post.id} post={post} setToggleFetch={setToggleFetch} />
