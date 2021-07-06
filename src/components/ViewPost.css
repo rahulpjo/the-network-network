@@ -1,3 +1,36 @@
+#view-post {
+  position: relative;
+  width: 100%;
+  padding: 30px;
+}
+.selected-post {
+  color: white;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.selected-post > .post {
+  margin: 20px;
+}
+
+.selected-post > .post > h3 {
+  margin-top: 10px;
+  color: #ffd57f;
+  font-size: 30px;
+}
+
+.selected-post > .post > h4 {
+  margin-bottom: 20px;
+  font-size: 22px;
+}
+
+.post aside button.selected,
+.note-heading button.selected {
+  color: #001635;
+}
+
 .note-form {
   margin: 10px 0;
 }
@@ -18,4 +51,11 @@ hr {
   outline: 2px solid #ffd57f;
   outline-offset: -3px;
   overflow: hidden;
+}
+
+/* responsive css */
+@media screen and (max-width: 800px) {
+  #view-post {
+    flex-direction: column;
+  }
 }

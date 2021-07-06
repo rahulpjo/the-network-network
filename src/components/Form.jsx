@@ -31,33 +31,31 @@ function Form(props) {
   };
 
   return (
-    <>
+    <main id="new-post">
       <BackButton />
-      <main>
-        <section className="form">
-          <h3>Create a New Post</h3>
-          <form onSubmit={handleSubmit}>
-            <label htmlFor="username">Username</label>
-            <input
-              type="text"
-              id="username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
-            <label htmlFor="text">Post Body</label>
-            <textarea
-              type="text"
-              id="text"
-              value={text}
-              onChange={(e) => setText(e.target.value)}
-            />
-            <button type="submit">
-              <h4>Submit</h4>
-            </button>
-          </form>
-        </section>
-      </main>
-    </>
+      <section className="form">
+        <h3>Create a New Post</h3>
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="username">Username</label>
+          <input
+            type="text"
+            id="username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <label htmlFor="text">Post Body</label>
+          <textarea
+            type="text"
+            id="text"
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+          />
+          <button type="submit">
+            <h4>Submit</h4>
+          </button>
+        </form>
+      </section>
+    </main>
   );
 }
 

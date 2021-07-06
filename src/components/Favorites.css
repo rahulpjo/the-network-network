@@ -1,0 +1,11 @@
+#favorites {
+  width: 100%;
+  padding: 50px 20px;
+  justify-content: flex-start;
+}
+
+@media screen and (max-width: 800px) {
+  #favorites {
+    flex-direction: column;
+  }
+}

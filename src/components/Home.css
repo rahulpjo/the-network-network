@@ -1,7 +1,38 @@
 main#home {
   justify-content: flex-start;
+  align-items: center;
 }
 
-#home > * {
-  margin: 20px;
+main#home + footer {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+
+.main-area {
+  position: relative;
+  width: 100%;
+}
+.main-area > h2 {
+  background-color: #ffd57f;
+  padding: 15px 0;
+  font-size: 35px;
+  color: #001635;
+}
+
+@media screen and (max-width: 800px) {
+  .main-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .main-area > h2 {
+    width: 100%;
+    padding-bottom: 0;
+  }
+  main {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 }

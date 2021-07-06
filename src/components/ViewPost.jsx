@@ -40,8 +40,8 @@ function ViewPost(props) {
 
   return post.fields ? (
     <>
-      <BackButton />
-      <main>
+      <main id="view-post">
+        <BackButton />
         <article className="selected-post">
           <section className="post">
             <h3>{post.fields.username}</h3>

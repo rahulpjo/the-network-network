@@ -22,9 +22,9 @@ function Home(props) {
   }, [toggleFetch, setPosts]);
 
   return (
-    <>
-      <SortBy posts={posts} setPosts={setPosts} />
+    <div className="main-area">
       <h2>Hello {username}!</h2>
+      <SortBy posts={posts} setPosts={setPosts} />
       <main id="home">
         {posts.length ? (
           posts.map((post) => (
@@ -34,7 +34,7 @@ function Home(props) {
           <h2>Loading...</h2>
         )}
       </main>
-    </>
+    </div>
   );
 }
 

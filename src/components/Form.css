@@ -1,3 +1,7 @@
+#new-post {
+  width: 100%;
+}
+
 form {
   display: flex;
   flex-direction: column;
@@ -56,4 +60,10 @@ form > button {
 .form textarea:focus {
   outline-color: #ffd57f;
   outline-offset: -1px;
+}
+
+@media screen and (max-width: 767px) {
+  #new-post {
+    padding-top: 70px;
+  }
 }

@@ -1,14 +1,41 @@
-.sort-button {
+.sort-area {
   text-align: left;
   background-color: #ffd57f;
   color: #001635;
   border-radius: 0 0 0 16px;
   border: none;
   padding: 20px;
-  display: inline;
-  font-weight: bold;
+  width: 260px;
+  justify-content: space-between;
+  display: flex;
+  flex-flow: row;
   position: absolute;
   right: 0;
+  top: 0;
   cursor: pointer;
   font-size: 20px;
+}
+.sort-area select {
+  text-align: left;
+  background-color: #ffd57f;
+  color: #001635;
+  border: none;
+  display: inline;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.sort-area select:focus {
+  outline: none;
+}
+
+@media screen and (max-width: 800px) {
+  .sort-area {
+    position: static;
+    border-radius: 0 0 0 0;
+    padding: 0px 30px 20px;
+    width: 100%;
+    justify-content: center;
+  }
 }
