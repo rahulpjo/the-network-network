@@ -4,65 +4,70 @@ import "./SortBy.css";
 
 function SortBy(props) {
   const [sortType, setSortType] = useState("");
-  const [sortPosts, setSortPosts] = useState([]);
-  const { posts, setPosts } = props;
-  useEffect(() => {
-    setPosts(sortPosts);
-  }, [sortPosts, setPosts]);
+  const [sortBool, setSortBool] = useState(false);
+  const { posts, setSortPosts } = props;
 
-  useEffect(() => {
-    const merge = (arrA, arrB) => {
-      const newArray = [];
+  const merge = (arrA, arrB) => {
+    const newArray = [];
 
-      while (arrA.length && arrB.length) {
-        if (sortType === "votes") {
-          if (arrA[0].fields.votes >= arrB[0].fields.votes) {
-            newArray.push(arrA.shift());
-          } else {
-            newArray.push(arrB.shift());
-          }
-        }
-        if (sortType === "username") {
-          if (
-            arrA[0].fields.username.localeCompare(arrB[0].fields.username) <= 0
-          ) {
-            newArray.push(arrA.shift());
-          } else {
-            newArray.push(arrB.shift());
-          }
-        }
-        if (sortType === "time") {
-          if (arrA[0].createdTime >= arrB[0].createdTime) {
-            newArray.push(arrA.shift());
-          } else {
-            newArray.push(arrB.shift());
-          }
+    while (arrA.length && arrB.length) {
+      if (sortType === "votes") {
+        if (arrA[0].fields.votes >= arrB[0].fields.votes) {
+          newArray.push(arrA.shift());
+        } else {
+          newArray.push(arrB.shift());
         }
       }
-
-      return [...newArray, ...arrA, ...arrB];
-    };
-
-    const mergeSort = (arr) => {
-      console.log(sortType);
-      if (arr.length === 1 || arr.length === 0) {
-        return arr;
+      if (sortType === "username") {
+        if (
+          arrA[0].fields.username.localeCompare(arrB[0].fields.username) <= 0
+        ) {
+          newArray.push(arrA.shift());
+        } else {
+          newArray.push(arrB.shift());
+        }
       }
-      const mid = Math.floor(arr.length / 2);
-      const left = arr.slice(0, mid);
-      const right = arr.slice(mid);
-      return merge(mergeSort(left), mergeSort(right));
-    };
-
-    if (sortType) {
-      setSortPosts(mergeSort(posts));
+      if (sortType === "time") {
+        if (arrA[0].createdTime >= arrB[0].createdTime) {
+          newArray.push(arrA.shift());
+        } else {
+          newArray.push(arrB.shift());
+        }
+      }
     }
-  }, [sortType, posts]);
+
+    return [...newArray, ...arrA, ...arrB];
+  };
+  // eslint-disable-next-line
+  const mergeSort = (arr) => {
+    let mergeArray = [...arr];
+    if (mergeArray.length === 1 || mergeArray.length === 0) {
+      return mergeArray;
+    }
+    const mid = Math.floor(mergeArray.length / 2);
+    const left = mergeArray.slice(0, mid);
+    const right = mergeArray.slice(mid);
+    return merge(mergeSort(left), mergeSort(right));
+  };
+
+  const handleChange = (e) => {
+    setSortType(e.target.value);
+    setSortBool(true);
+  };
+
+  useEffect(() => {
+    if (sortBool) {
+      const arr = [...posts];
+      let newArray = mergeSort(arr);
+      setSortPosts(newArray);
+      setSortBool(false);
+    }
+  }, [sortBool, posts, setSortPosts, mergeSort]);
 
   return (
     <form className="sort-area">
       <h3>Sort By</h3>
-      <select name="sort" onChange={(e) => setSortType(e.target.value)}>
+      <select name="sort" value={sortType} onChange={handleChange}>
         <option id="please-select" value="">
           -------------
         </option>

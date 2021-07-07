@@ -7,6 +7,7 @@ import "./Home.css";
 
 function Home(props) {
   const [username, setUsername] = useState("");
+  const [sortPosts, setSortPosts] = useState([]);
   const { posts, setPosts, toggleFetch, setToggleFetch } = props;
   useEffect(() => {
     setUsername(sessionStorage.username);
@@ -16,15 +17,22 @@ function Home(props) {
     const getPosts = async () => {
       const res = await axios.get(basePostsURL, config);
       setPosts(res.data.records);
+      console.log(res.data.records);
     };
 
     getPosts();
   }, [toggleFetch, setPosts]);
 
+  useEffect(() => {
+    setPosts(sortPosts);
+  }, [sortPosts, setPosts]);
+
   return (
     <div className="main-area">
       <h2>Hello {username}!</h2>
-      <SortBy posts={posts} setPosts={setPosts} />
+      {posts.length ? (
+        <SortBy posts={posts} setSortPosts={setSortPosts} />
+      ) : null}
       <main id="home">
         {posts.length ? (
           posts.map((post) => (
