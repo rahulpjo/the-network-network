@@ -14,8 +14,11 @@ function NoteList(props) {
   useEffect(() => {
     const getNotes = async () => {
       const res = await axios.get(baseNotesURL, config);
+
       const results = res.data.records.filter(
-        (currNote) => currNote.fields.commentFor[0] === props.id
+        (currNote) =>
+          currNote.fields.commentFor &&
+          currNote.fields.commentFor[0] === props.id
       );
       setNotes(results);
     };
