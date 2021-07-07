@@ -38,7 +38,6 @@ function Note(props) {
             votes: noteVotes,
           },
         };
-        console.log(newVotes);
         await axios.put(url, newVotes, config);
         setTimeout(() => {
           setToggleFetch((curr) => !curr);
@@ -91,7 +90,6 @@ function Note(props) {
       favoritesArray.push(newNote);
       sessionStorage.setItem("favoriteNotes", JSON.stringify(favoritesArray));
     }
-    console.log(sessionStorage);
   };
 
   const addToDisliked = () => {
@@ -103,7 +101,6 @@ function Note(props) {
     } else {
       sessionStorage.setItem("dislikedNotes", JSON.stringify([newNote]));
     }
-    console.log(JSON.parse(sessionStorage.dislikedNotes));
   };
 
   const removeFromFavorites = () => {

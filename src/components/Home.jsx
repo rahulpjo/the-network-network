@@ -17,7 +17,6 @@ function Home(props) {
     const getPosts = async () => {
       const res = await axios.get(basePostsURL, config);
       setPosts(res.data.records);
-      console.log(res.data.records);
     };
 
     getPosts();

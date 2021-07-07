@@ -16,7 +16,6 @@ function Favorites(props) {
         )
       );
     }
-    console.log(props.posts);
   }, [props.posts]);
   return (
     <main id="favorites">

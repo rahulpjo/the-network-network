@@ -92,7 +92,6 @@ function Post(props) {
       favoritesArray.push(newPost);
       sessionStorage.setItem("favorites", JSON.stringify(favoritesArray));
     }
-    console.log(sessionStorage);
   };
 
   const addToDisliked = () => {
@@ -104,7 +103,6 @@ function Post(props) {
     } else {
       sessionStorage.setItem("disliked", JSON.stringify([newPost]));
     }
-    console.log(JSON.parse(sessionStorage.disliked));
   };
 
   const removeFromFavorites = () => {
