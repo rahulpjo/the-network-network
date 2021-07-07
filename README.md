@@ -115,15 +115,15 @@ https://api.airtable.com/v0/AIRTABLE_BASE_ID/posts?api_key=YOUR_API_KEY
 
 ## Project Schedule
 
-| Day        | Deliverable                                   | Status     |
-| ---------- | --------------------------------------------- | ---------- |
-| June 28-29 | Prompt / Wireframes / Timeframes              | Complete   |
-| June 29    | Project Approval                              | Complete   |
-| June 30    | Core Application Structure (React, CSS, etc.) | Complete   |
-| July 1     | Axios Requests/Form Handling/Rendering        | Complete   |
-| July 2     | MVP/Deployment                                | Complete   |
-| July 6     | Post-MVP                                      | Incomplete |
-| July 7     | Presentations                                 | Incomplete |
+| Day        | Deliverable                                   | Status   |
+| ---------- | --------------------------------------------- | -------- |
+| June 28-29 | Prompt / Wireframes / Timeframes              | Complete |
+| June 29    | Project Approval                              | Complete |
+| June 30    | Core Application Structure (React, CSS, etc.) | Complete |
+| July 1     | Axios Requests/Form Handling/Rendering        | Complete |
+| July 2     | MVP/Deployment                                | Complete |
+| July 6     | Post-MVP                                      | Complete |
+| July 7     | Presentations                                 | Complete |
 
 ## Timeframes
 
@@ -137,16 +137,16 @@ https://api.airtable.com/v0/AIRTABLE_BASE_ID/posts?api_key=YOUR_API_KEY
 | Routing Setup                 |    H     |     1.5hrs     |    1.5hrs     |   1.5hrs    |
 | Airtable Setup                |    H     |      2hrs      |    1.5hrs     |   1.5hrs    |
 | Axios Requests                |    H     |      3hrs      |     3hrs      |    3hrs     |
-| Responsiveness                |    M     |      2hrs      |      1hr      |     1hr     |
-| Posts Rendering               |    H     |     2.5hrs     |    2.5hrs     |   2.5hrs    |
+| Responsiveness                |    M     |      2hrs      |     2hrs      |    2hrs     |
+| Posts Rendering               |    H     |     2.5hrs     |    3.5hrs     |   3.5hrs    |
 | Auxiliary Component Rendering |    H     |      3hrs      |    2.5hrs     |   2.5hrs    |
 | Form Setup                    |    M     |     2.5hrs     |     2hrs      |    2hrs     |
 | Form Handling                 |    H     |      3hrs      |     2hrs      |    2hrs     |
 | Favorites Page Setup          |    L     |      3hrs      |     3hrs      |    3hrs     |
-| Debugging                     |    M     |      3hrs      |     3hrs      |    3hrs     |
-| Animation                     |    L     |      2hrs      |               |             |
-| Deployment                    |    H     |      2hrs      |      1hr      |     1hr     |
-| Total                         |          |     42hrs      |    36.5hrs    |   36.5hrs   |
+| Debugging                     |    M     |      3hrs      |    4.5hrs     |   4.5hrs    |
+| Animation                     |    L     |      2hrs      |     1hrs      |    1hrs     |
+| Deployment                    |    H     |      2hrs      |      2hr      |     2hr     |
+| Total                         |          |     42hrs      |     42hrs     |    42hrs    |
 
 ## SWOT Analysis
 
